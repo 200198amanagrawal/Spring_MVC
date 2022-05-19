@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomeController {
@@ -27,5 +28,18 @@ public class HomeController {
     public String about()
     {
         return "about";
+    }
+    
+    @RequestMapping("/help")
+    public ModelAndView help()
+    {
+        ModelAndView modelAndView=new ModelAndView();
+        
+        //setting the request params
+        modelAndView.addObject("name", "aman");
+        
+        //setting the page URL
+        modelAndView.setViewName("help");
+        return modelAndView;
     }
 }
