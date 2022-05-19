@@ -6,6 +6,8 @@
 
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page isELIgnored="false" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,20 +16,10 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <%
-            //taking request's value from controller
-            String name=(String) request.getAttribute("name");
-            List<String> f=(List<String>) request.getAttribute("friends");
-        %>
-        <h3>Hi from <%=name%></h3>
-        <h4>Friends</h4>
-        <%
-            for(String f1:f)
-            {
-         %>
-                <%=f1%>
-        <%
-            }
-        %>
+        <h3>Name via Expression Language ${name}</h3>
+        <h3>Friends through JSTL</h3>
+        <c:forEach var="friends" items="${friends}">
+            <h4>${friends}</h4>
+        </c:forEach>
     </body>
 </html>
